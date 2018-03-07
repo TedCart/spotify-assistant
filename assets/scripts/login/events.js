@@ -1,3 +1,5 @@
+const getFormFields = require(`../../../lib/get-form-fields`)
+
 const api = require('./api.js')
 const ui = require('./ui.js')
 
@@ -58,17 +60,45 @@ const onBeforeUnload = function () {
   // if ((store.game) && (store.timerCheck !== '')) {
   if (store.code) {
     // localStorage.setItem('savedGame', JSON.stringify(store.game))
-    // localStorage.setItem('playerWords', JSON.stringify(store.playerWords))
-    // localStorage.setItem('playerWordCoordinates', JSON.stringify(store.playerWordCoordinates))
-    // localStorage.setItem('timerEndPoint', (store.timerEndPoint))
-    // localStorage.setItem('timerCheck', (store.timerCheck))
     // localStorage.setItem('CPUplayer', (store.CPUplayer))
   } else {
     // localStorage.removeItem('playerWords')
-    // localStorage.removeItem('playerWordCoordinates')
-    // localStorage.removeItem('timerEndPoint')
-    // localStorage.removeItem('timerCheck')
   }
+}
+
+const onSignUp = function (event) {
+  const data = getFormFields(this)
+  // console.log(data)
+  event.preventDefault()
+  api.signUp(data)
+    .then(ui.signUpSuccess)
+    .catch(ui.signUpFailure)
+}
+
+const onSignIn = function (event) {
+  const data = getFormFields(this)
+  // console.log(data)
+  event.preventDefault()
+  api.signIn(data)
+    .then(ui.signInSuccess)
+    .catch(ui.signInFailure)
+}
+
+const onChangePassword = function (event) {
+  const data = getFormFields(this)
+  // console.log(data)
+  event.preventDefault()
+  api.changePassword(data)
+    .then(ui.changePasswordSuccess)
+    .catch(ui.changePasswordFailure)
+}
+
+const onSignOut = function (event) {
+  // console.log(store.user)
+  event.preventDefault()
+  api.signOut()
+    .then(ui.signOutSuccess)
+    .catch(ui.signOutFailure)
 }
 
 // On document ready
