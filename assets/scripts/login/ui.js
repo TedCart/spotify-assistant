@@ -2,6 +2,7 @@ const store = require('../store')
 
 const SignedOut = require('../templates/signed-out.handlebars')
 const SignedIn = require('../templates/signed-in.handlebars')
+const SignedInButtons = require('../templates/signed-in-buttons.handlebars')
 
 const getAccessTokenSuccess = function (data) {
   $('#welcome-div').html('HOORAY!!!!!!\n' + data)
@@ -59,9 +60,12 @@ const refreshLoginDiv = function () {
   if (store.user) {
     const loggedIn = SignedIn()
     $('#login-div').html(loggedIn)
+    const makeButtons = SignedInButtons()
+    $('#button-div').html(makeButtons)
   } else {
     const loggedOut = SignedOut()
     $('#login-div').html(loggedOut)
+    $('#button-div').html('')
   }
 }
 
