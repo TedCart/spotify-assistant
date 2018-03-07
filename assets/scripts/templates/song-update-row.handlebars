@@ -1,0 +1,7 @@
+<form id="update-song-form" class="edit-song-form">
+  <input type="text" name="song[title]" value="{{song.Title}}" id="input-title-replace-{{song.id}}">
+  <input type="text" name="song[artist]" value="{{song.Artist}}" id="input-artist-replace-{{song.id}}">
+  <input type="hidden" name="song[id]" value="{{song.id}}">
+  <input type="submit" value="Submit" class="confirm-edit-button">
+  <!-- <button class="cancel-edit-button">Cancel</button> -->
+</form>
