@@ -96,6 +96,7 @@ const onChangePassword = function (event) {
 const onSignOut = function (event) {
   // console.log(store.user)
   event.preventDefault()
+  console.log('atempting sign out')
   api.signOut()
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
@@ -109,6 +110,11 @@ function addHandlers () {
   // $('#oldGames').on('click', onGetAllGames)
   // $('body').on('click', '.remove-button', onRemoveGame)
   // $('body').on('click', '.review-button', rebuildGame)
+  ui.refreshLoginDiv()
+  $('#login-div').on('submit', '#sign-up-form', onSignUp)
+  $('#login-div').on('submit', '#sign-in-form', onSignIn)
+  $('#login-div').on('submit', '#change-password', onChangePassword)
+  $('#login-div').on('click', '#sign-out', onSignOut)
   $(window).on('beforeunload', onBeforeUnload)
 }
 

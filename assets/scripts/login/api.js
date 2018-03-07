@@ -33,7 +33,7 @@ const signIn = (data) => {
 
 const changePassword = (data) => {
   return $.ajax({
-    url: config.apiOrigin + '/change-password/' + store.user.id,
+    url: config.apiOrigin + '/change-password/',
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -44,7 +44,7 @@ const changePassword = (data) => {
 
 const signOut = () => {
   return $.ajax({
-    url: config.apiOrigin + '/sign-out/' + store.user.id,
+    url: config.apiOrigin + '/sign-out/',
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + store.user.token
