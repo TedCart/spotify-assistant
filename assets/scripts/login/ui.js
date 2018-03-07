@@ -1,3 +1,5 @@
+'use strict'
+
 const store = require('../store')
 
 const SignedOut = require('../templates/signed-out.handlebars')
@@ -24,7 +26,7 @@ const signUpFailure = function (error) {
 }
 
 const signInSuccess = function (data) {
-  // console.log(data)
+  console.log(data)
   $('#welcome-div').text('Successfully signed in!')
   store.user = data.user
   refreshLoginDiv()
@@ -48,6 +50,7 @@ const changePasswordFailure = function (error) {
 const signOutSuccess = function (data) {
   // console.log(data)
   store.user = ''
+  store.songs = ''
   $('#welcome-div').text(`You signed out!`)
   refreshLoginDiv()
 }
