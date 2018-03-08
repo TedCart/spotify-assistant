@@ -1,7 +1,14 @@
-<form id="update-song-form" class="edit-song-form">
-  <input type="text" name="song[title]" value="{{song.Title}}" id="input-title-replace-{{song.id}}">
-  <input type="text" name="song[artist]" value="{{song.Artist}}" id="input-artist-replace-{{song.id}}">
-  <input type="hidden" name="song[id]" value="{{song.id}}">
-  <input type="submit" value="Submit" class="confirm-edit-button">
-  <!-- <button class="cancel-edit-button">Cancel</button> -->
+<form class="edit-song-form">
+  <div class="col-xs-5">
+    <input type="text" name="song[title]" value="{{song.Title}}" id="input-title-replace-{{song.id}}">
+  </div>
+  <div class="col-xs-4">
+    <input type="text" name="song[artist]" value="{{song.Artist}}" id="input-artist-replace-{{song.id}}">
+    <input type="hidden" name="song[id]" value="{{song.id}}">
+  </div>
+  <div class="col-xs-3">
+    <!-- <input type="submit" value="Submit" class="confirm-edit-button" style="float:right;"> -->
+    <button type="submit" class="confirm-edit-button">Submit</button>
+    <button class="cancel-edit-button">Cancel</button>
+  </div>
 </form>
