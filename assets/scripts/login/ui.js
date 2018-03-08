@@ -7,12 +7,21 @@ const SignedIn = require('../templates/signed-in.handlebars')
 const SignedInButtons = require('../templates/signed-in-buttons.handlebars')
 
 const getAccessTokenSuccess = function (data) {
-  $('#welcome-div').html('HOORAY!!!!!!\n' + data)
-  console.log(data)
+  // $('#welcome-div').html('HOORAY!!!!!!\n' + data)
+  // console.log(data)
+  store.spotify = store.spotify || {}
+  store.spotify.clientAuth = data.Basic
+  return data
 }
 
 const getAccessTokenFailure = function () {
   console.error()
+}
+
+const keepGettingThatAccessTokenSuccess = function (data) {
+  console.log('Successful Access!')
+  console.log('data is:\n', data)
+  store.spotifySuper = data
 }
 
 const signUpSuccess = function (data) {
@@ -89,5 +98,6 @@ module.exports = {
   changePasswordFailure,
   signOutSuccess,
   signOutFailure,
-  refreshLoginDiv
+  refreshLoginDiv,
+  keepGettingThatAccessTokenSuccess
 }
