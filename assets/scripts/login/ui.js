@@ -70,6 +70,7 @@ const signOutFailure = function (err) {
   if (err.statusText === 'Unauthorized') {
     signOutSuccess()
   }
+  signOutSuccess()
 }
 
 const refreshLoginDiv = function () {
