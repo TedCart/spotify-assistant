@@ -56,8 +56,11 @@ const signOutSuccess = function (data) {
   refreshLoginDiv()
 }
 
-const signOutFailure = function (error) {
-  console.error(error)
+const signOutFailure = function (err) {
+  console.error(err)
+  if (err.statusText === 'Unauthorized') {
+    signOutSuccess()
+  }
 }
 
 const refreshLoginDiv = function () {

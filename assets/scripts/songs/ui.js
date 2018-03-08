@@ -12,13 +12,18 @@ const getAllSongsSuccess = function (data) {
   $('#main-left-container').html(songsForDiv)
 }
 
-const getAllSongsFailure = function () { console.error() }
+const getAllSongsFailure = function (err) {
+  console.log(err)
+  // console.log('typeof err is:\n', typeof (err))
+  // console.log(store.user)
+}
 
 const createSongSuccess = function (data) {
   console.log('data from new song:\n', data)
   $('#welcome-div').text(`You made a song! \n See console log for details...`)
   const newRow = newSongAddRow({ song: data.song })
   $('#main-left-container').append(newRow)
+  // console.log('newRow is :\n', newRow)
   if (store.songs) { store.songs.push(data.song) }
 }
 
