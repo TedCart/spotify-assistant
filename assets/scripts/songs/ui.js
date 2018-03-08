@@ -29,6 +29,7 @@ const editSongSuccess = function (data) {
   $('#welcome-div').text(`You updated a song! \n See console log for details...`)
   const replacementRow = songRow({ song: data.song })
   $('#row-' + data.song.id).html(replacementRow)
+  store.old = {}
 }
 
 const editSongFailure = function () {

@@ -26,6 +26,9 @@ const onCreateSong = function (event) {
 const editSetup = function (event) {
   event.preventDefault()
   // FYI: dataset.songId translates to data-song-id in the DOM
+  if (store.old) {
+    if (store.old.id) { cancelEdit() }
+  }
   const butClick = event.target
   const songId = butClick.dataset.songId
   store.old = {}
@@ -48,6 +51,14 @@ const onEditSong = function (event) {
     .catch(ui.editSongFailure)
 }
 
+const cancelEdit = function () {
+  // store.old is a saved version of the row where you clicked edit
+  if (store.old.id) {
+    $('#row-' + store.old.id).html(store.old.backup)
+    store.old = {}
+  }
+}
+
 // On document ready
 function addHandlers () {
   // $('#getWordsButton').on('click', player.printWordsToPage)
@@ -57,9 +68,10 @@ function addHandlers () {
   $('#button-div').on('submit', '#create-song', onCreateSong)
 
   $('body').on('click', '.edit-button', editSetup)
-  // $('body').on('click', '.confirm-edit-button', () => $('#update-song-form').submit())
-  // $('body').on('submit', '.edit-song-form', onEditSong)
-  $('body').on('submit', '#update-song-form', onEditSong)
+  $('body').on('submit', '.edit-song-form', onEditSong)
+
+  $('body').on('click', '.cancel-edit-button', cancelEdit)
+  // $('body').on('submit', '#update-song-form', onEditSong)
   // $('body').on('click', '.confirm-edit-button', submitEditSong)
 
   // $('#login-div').on('submit', '#sign-in-form', onSignIn)
