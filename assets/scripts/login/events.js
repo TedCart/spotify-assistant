@@ -87,7 +87,9 @@ const onBeforeUnload = function () {
 const checkForLogin = function () {
   const objectToVerify = localStorage.getItem('savedUser')
   if (objectToVerify) {
+    console.log('objectToVerify', objectToVerify)
     const verifyAgain = JSON.parse(objectToVerify)
+    console.log('verifyAgain', verifyAgain)
     if (verifyAgain) {
       store.user = verifyAgain
       store.spotify = JSON.parse(localStorage.getItem('savedSpotify'))
