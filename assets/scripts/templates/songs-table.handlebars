@@ -4,7 +4,5 @@
   <div class="col-xs-2" id="songs-table-header-3">Edit</div>
 </div>
 {{#each songs as |song|}}
-  <div class="row vision-test" id="row-{{song.id}}">
-    {{> song-row song=song}}
-  </div>
+  {{> new-song-add-row song=song}}
 {{/each}}
