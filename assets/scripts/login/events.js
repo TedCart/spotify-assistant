@@ -58,11 +58,30 @@ function checkForCodeInURL () {
 
 const onBeforeUnload = function () {
   // if ((store.game) && (store.timerCheck !== '')) {
-  if (store.code) {
-    // localStorage.setItem('savedGame', JSON.stringify(store.game))
-    // localStorage.setItem('CPUplayer', (store.CPUplayer))
-  } else {
-    // localStorage.removeItem('playerWords')
+  if (store.user) {
+    if (store.user.token) {
+      localStorage.setItem('savedUser', JSON.stringify(store.user))
+      // localStorage.setItem('savedGame', JSON.stringify(store.game))
+      // localStorage.setItem('CPUplayer', (store.CPUplayer))
+      return
+    }
+  }
+  localStorage.removeItem('playerWords')
+}
+
+const checkForLogin = function () {
+  const objectToVerify = localStorage.getItem('savedUser')
+  // const objectToVerify = ''
+  // console.log('objectToVerify:\n', objectToVerify)
+  // console.log('truthy or falsy?\n', objectToVerify ? 'truthy' : 'falsy')
+  if (objectToVerify) {
+    // console.log('objectToVerify (parsed):\n', JSON.parse(objectToVerify))
+    // console.log('truthy or falsy? (parsed)\n', JSON.parse(objectToVerify) ? 'truthy' : 'falsy')
+    // console.log('objectToVerify.token check:\n', objectToVerify.token) // returns undefined
+    const verifyAgain = JSON.parse(objectToVerify)
+    if (verifyAgain) {
+      store.user = verifyAgain
+    }
   }
 }
 
@@ -120,5 +139,6 @@ function addHandlers () {
 
 module.exports = {
   addHandlers,
-  checkForCodeInURL
+  checkForCodeInURL,
+  checkForLogin
 }

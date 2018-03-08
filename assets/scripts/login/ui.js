@@ -52,6 +52,7 @@ const signOutSuccess = function (data) {
   store.user = ''
   store.songs = ''
   $('#welcome-div').text(`You signed out!`)
+  localStorage.clear()
   refreshLoginDiv()
 }
 
@@ -61,15 +62,17 @@ const signOutFailure = function (error) {
 
 const refreshLoginDiv = function () {
   if (store.user) {
-    const loggedIn = SignedIn()
-    $('#login-div').html(loggedIn)
-    const makeButtons = SignedInButtons()
-    $('#button-div').html(makeButtons)
-  } else {
-    const loggedOut = SignedOut()
-    $('#login-div').html(loggedOut)
-    $('#button-div').html('')
+    if (store.user.token) {
+      const loggedIn = SignedIn()
+      $('#login-div').html(loggedIn)
+      const makeButtons = SignedInButtons()
+      $('#button-div').html(makeButtons)
+      return
+    }
   }
+  const loggedOut = SignedOut()
+  $('#login-div').html(loggedOut)
+  $('#button-div').html('')
 }
 
 module.exports = {

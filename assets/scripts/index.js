@@ -14,6 +14,7 @@ $(() => {
 // const example = require('./example')
 
 $(() => {
+  login.checkForLogin()
   // login.checkForCodeInURL()
   // setAPIOrigin(location, config)
   login.addHandlers()
