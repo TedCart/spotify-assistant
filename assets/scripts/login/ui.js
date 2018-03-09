@@ -8,9 +8,9 @@ const SignedInButtons = require('../templates/signed-in-buttons.handlebars')
 
 const getAccessTokenSuccess = function (data) {
   // $('#welcome-div').html('HOORAY!!!!!!\n' + data)
-  // console.log(data)
+  console.log('We received an access token:\n', data)
   store.spotify = store.spotify || {}
-  store.spotify.clientAuth = data.Basic
+  store.spotify = data
   return data
 }
 

@@ -42,8 +42,6 @@ function checkForCodeInURL () {
         store.spotify = urlParams
         api.getAccessToken(urlParams)
           .then(ui.getAccessTokenSuccess)
-          .then(api.keepGettingThatAccessToken)
-          .then(ui.keepGettingThatAccessTokenSuccess)
           .then(ui.getAccessTokenFailure)
       } else {
         let buttonURL = 'https://accounts.spotify.com/authorize/'
