@@ -61,6 +61,7 @@ const signOutSuccess = function (data) {
   store.user = ''
   store.songs = ''
   $('#welcome-div').text(`You signed out!`)
+  $('#main-left-container').html('')
   localStorage.clear()
   refreshLoginDiv()
 }
