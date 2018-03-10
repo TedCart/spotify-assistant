@@ -88,6 +88,7 @@ const deleteSetup = function (event) {
 const onDeleteSong = function (event) {
   event.preventDefault()
   const songId = event.target.dataset.songId
+  console.log('songId is:', songId)
   api.deleteSong(songId)
     .then(ui.deleteSongSuccess)
     .catch(ui.deleteSongFailure)

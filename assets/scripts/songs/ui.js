@@ -48,8 +48,12 @@ const editSongFailure = function () { console.error() }
 const deleteSongSuccess = function () {
   console.log('Song successfully deleted!')
   $('#welcome-div').text(`You DELETED a song! \n See console log for details...`)
-  const rowToDelete = $('#row-' + store.oldDelete.id)
+
+  const rowToDelete = document.getElementById('row-' + store.oldDelete.id)
   rowToDelete.parentNode.removeChild(rowToDelete)
+
+  // $('#row-' + store.oldDelete.id).html('')
+
   store.oldDelete = {}
 }
 
