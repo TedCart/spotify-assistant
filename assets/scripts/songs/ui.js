@@ -10,7 +10,6 @@ const getAllSongsSuccess = function (data) {
   store.songs = data.songs
   const songsForDiv = songsTable({ songs: store.songs })
   $('#main-left-container').html(songsForDiv)
-  return 'placeholder'
 }
 
 const getAllSongsFailure = function (err) {
@@ -26,6 +25,8 @@ const createSongSuccess = function (data) {
   $('#main-left-container').append(newRow)
   // console.log('newRow is :\n', newRow)
   if (store.songs) { store.songs.push(data.song) }
+  document.getElementById('create-song-title').value = ''
+  document.getElementById('create-song-artist').value = ''
 }
 
 const createSongFailure = function () { console.error() }

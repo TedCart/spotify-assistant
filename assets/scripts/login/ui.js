@@ -2,8 +2,6 @@
 
 const store = require('../store')
 
-const songsEvents = require('../songs/events.js')
-
 const SignedOut = require('../templates/signed-out.handlebars')
 const SignedIn = require('../templates/signed-in.handlebars')
 const SignedInButtons = require('../templates/signed-in-buttons.handlebars')
@@ -29,11 +27,26 @@ const keepGettingThatAccessTokenSuccess = function (data) {
 const signUpSuccess = function (data) {
   // console.log(data)
   $('#welcome-div').text('Successfully created account!')
+  $('#create-account-message-box').text('Successfully created account!')
+  document.getElementById('new-user-email').value = ''
+  document.getElementById('new-user-password').value = ''
+  document.getElementById('new-user-password-confirm').value = ''
+  setTimeout(() => {
+    document.getElementById('close-create-account-button').click()
+  }, 500)
+  setTimeout(() => {
+    $('#sign-in-email').focus()
+  }, 1300)
 }
 
 const signUpFailure = function (error) {
   console.error(error)
   $('#welcome-div').text('FAIL. Check your info.')
+  $('#create-account-message-box').text('Account Create FAIL - check password (or account may already exist)')
+  document.getElementById('new-user-email').value = ''
+  document.getElementById('new-user-password').value = ''
+  document.getElementById('new-user-password-confirm').value = ''
+  $('#new-user-email').focus()
 }
 
 const signInSuccess = function (data) {
@@ -46,16 +59,29 @@ const signInSuccess = function (data) {
 const signInFailure = function (error) {
   console.error(error)
   $('#welcome-div').text('FAIL. Check your info.')
+  document.getElementById('sign-in-email').value = ''
+  document.getElementById('sign-in-password').value = ''
+  $('#sign-in-email').focus()
 }
 
 const changePasswordSuccess = function (data) {
   // console.log(data)
   $('#welcome-div').text(`You changed your password!`)
+  $('#change-password-status-message').text(`You changed your password!`)
+  document.getElementById('change-new-password-input').value = ''
+  document.getElementById('change-old-password-input').value = ''
+  setTimeout(() => {
+    document.getElementById('close-change-password').click()
+  }, 500)
 }
 
 const changePasswordFailure = function (error) {
   console.error(error)
-  $('#welcome-div').text(`Password change FAIL FAIL`)
+  $('#welcome-div').text(`Password change FAIL`)
+  $('#change-password-status-message').text(`Fail. Try again.`)
+  document.getElementById('change-new-password-input').value = ''
+  document.getElementById('change-old-password-input').value = ''
+  $('#change-new-password-input').focus()
 }
 
 const signOutSuccess = function (data) {
