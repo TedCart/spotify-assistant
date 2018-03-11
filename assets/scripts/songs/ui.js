@@ -10,6 +10,7 @@ const getAllSongsSuccess = function (data) {
   store.songs = data.songs
   const songsForDiv = songsTable({ songs: store.songs })
   $('#main-left-container').html(songsForDiv)
+  return 'placeholder'
 }
 
 const getAllSongsFailure = function (err) {

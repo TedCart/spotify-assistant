@@ -18,9 +18,19 @@ const onCreateSong = function (event) {
   const data = getFormFields(this)
   // console.log(data)
   event.preventDefault()
-  api.createSong(data)
-    .then(ui.createSongSuccess)
-    .catch(ui.createSongFailure)
+
+  if ($('#main-left-container').html() === '') {
+    api.getAllSongs()
+      .then(ui.getAllSongsSuccess)
+      .catch(ui.getAllSongsFailure)
+      .then(e => api.createSong(data))
+      .then(ui.createSongSuccess)
+      .catch(ui.createSongFailure)
+  } else {
+    api.createSong(data)
+      .then(ui.createSongSuccess)
+      .catch(ui.createSongFailure)
+  }
 }
 
 const editSetup = function (event) {
