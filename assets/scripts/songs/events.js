@@ -47,8 +47,8 @@ const editSetup = function (event) {
 const onEditSong = function (event) {
   const data = getFormFields(event.target)
   event.preventDefault()
-  console.log('edit song script ran\n', data)
-  console.log('Target was this:\n', event.target)
+  // console.log('edit song script ran\n', data)
+  // console.log('Target was this:\n', event.target)
   api.editSong(data)
     .then(ui.editSongSuccess)
     .catch(ui.editSongFailure)
@@ -88,7 +88,7 @@ const deleteSetup = function (event) {
 const onDeleteSong = function (event) {
   event.preventDefault()
   const songId = event.target.dataset.songId
-  console.log('songId is:', songId)
+  // console.log('songId is:', songId)
   api.deleteSong(songId)
     .then(ui.deleteSongSuccess)
     .catch(ui.deleteSongFailure)

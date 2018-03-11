@@ -3,6 +3,8 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require('./api.js')
 const ui = require('./ui.js')
 
+const songsEvents = require('../songs/events.js')
+
 const config = require('../config')
 const store = require('../store')
 
@@ -85,14 +87,14 @@ const onBeforeUnload = function () {
 const checkForLogin = function () {
   const objectToVerify = localStorage.getItem('savedUser')
   if (objectToVerify) {
-    console.log('objectToVerify', objectToVerify)
+    // console.log('objectToVerify', objectToVerify)
     const verifyAgain = JSON.parse(objectToVerify)
-    console.log('verifyAgain', verifyAgain)
+    // console.log('verifyAgain', verifyAgain)
     if (verifyAgain) {
       store.user = verifyAgain
       store.spotify = JSON.parse(localStorage.getItem('savedSpotify'))
       store.spotifySuper = JSON.parse(localStorage.getItem('savedSpotifySuper'))
-      console.log('store.spotifySuper is:\n', store.spotifySuper)
+      // console.log('store.spotifySuper is:\n', store.spotifySuper)
     }
   }
 }
@@ -112,6 +114,7 @@ const onSignIn = function (event) {
   event.preventDefault()
   api.signIn(data)
     .then(ui.signInSuccess)
+    .then(songsEvents.onGetAllSongs)
     .catch(ui.signInFailure)
 }
 
@@ -127,7 +130,7 @@ const onChangePassword = function (event) {
 const onSignOut = function (event) {
   // console.log(store.user)
   event.preventDefault()
-  console.log('atempting sign out')
+  // console.log('atempting sign out')
   api.signOut()
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)

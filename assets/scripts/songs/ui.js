@@ -5,8 +5,8 @@ const songRow = require('../templates/song-row.handlebars')
 const newSongAddRow = require('../templates/new-song-add-row.handlebars')
 
 const getAllSongsSuccess = function (data) {
-  console.log('data from getSongs:\n', data)
-  $('#welcome-div').text(`You got all the songs! \n See console log for details...`)
+  // console.log('data from getSongs:\n', data)
+  $('#welcome-div').text(`You got all the songs!`) // See console log for details...
   store.songs = data.songs
   const songsForDiv = songsTable({ songs: store.songs })
   $('#main-left-container').html(songsForDiv)
@@ -19,8 +19,8 @@ const getAllSongsFailure = function (err) {
 }
 
 const createSongSuccess = function (data) {
-  console.log('data from new song:\n', data)
-  $('#welcome-div').text(`You made a song! \n See console log for details...`)
+  // console.log('data from new song:\n', data)
+  $('#welcome-div').text(`You made a song!`) // See console log for details...
   const newRow = newSongAddRow({ song: data.song })
   $('#main-left-container').append(newRow)
   // console.log('newRow is :\n', newRow)
@@ -30,8 +30,8 @@ const createSongSuccess = function (data) {
 const createSongFailure = function () { console.error() }
 
 const editSongSuccess = function (data) {
-  console.log('data from updated song:\n', data)
-  $('#welcome-div').text(`You updated a song! \n See console log for details...`)
+  // console.log('data from updated song:\n', data)
+  $('#welcome-div').text(`You updated a song!`) // See console log for details...
   const replacementRow = songRow({ song: data.song })
   $('#row-' + data.song.id).html(replacementRow)
   if (store.songs) {
@@ -46,8 +46,8 @@ const editSongSuccess = function (data) {
 const editSongFailure = function () { console.error() }
 
 const deleteSongSuccess = function () {
-  console.log('Song successfully deleted!')
-  $('#welcome-div').text(`You DELETED a song! \n See console log for details...`)
+  // console.log('Song successfully deleted!')
+  $('#welcome-div').text(`You DELETED a song!`) // n See console log for details...`
 
   const rowToDelete = document.getElementById('row-' + store.oldDelete.id)
   rowToDelete.parentNode.removeChild(rowToDelete)

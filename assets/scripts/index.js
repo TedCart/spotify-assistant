@@ -18,7 +18,7 @@ $(() => {
   // setAPIOrigin(location, config)
   login.addHandlers()
   songs.addHandlers()
-  login.checkForCodeInURL()
+  // login.checkForCodeInURL()
 })
 
 // use require without a reference to ensure a file is bundled

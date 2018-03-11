@@ -25,7 +25,7 @@ const createSong = function (data) {
 }
 
 const editSong = function (data) {
-  console.log('tryin edit a song api call')
+  // console.log('tryin edit a song api call')
   return $.ajax({
     url: config.apiOrigin + '/songs/' + data.song.id,
     method: 'PATCH',

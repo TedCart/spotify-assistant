@@ -2,13 +2,15 @@
 
 const store = require('../store')
 
+const songsEvents = require('../songs/events.js')
+
 const SignedOut = require('../templates/signed-out.handlebars')
 const SignedIn = require('../templates/signed-in.handlebars')
 const SignedInButtons = require('../templates/signed-in-buttons.handlebars')
 
 const getAccessTokenSuccess = function (data) {
   // $('#welcome-div').html('HOORAY!!!!!!\n' + data)
-  console.log('We received an access token:\n', data)
+  // console.log('We received an access token:\n', data)
   store.spotify = store.spotify || {}
   store.spotify = data
   return data
@@ -19,8 +21,8 @@ const getAccessTokenFailure = function () {
 }
 
 const keepGettingThatAccessTokenSuccess = function (data) {
-  console.log('Successful Access!')
-  console.log('data is:\n', data)
+  // console.log('Successful Access!')
+  // console.log('data is:\n', data)
   store.spotifySuper = data
 }
 
@@ -35,7 +37,7 @@ const signUpFailure = function (error) {
 }
 
 const signInSuccess = function (data) {
-  console.log(data)
+  // console.log(data)
   $('#welcome-div').text('Successfully signed in!')
   store.user = data.user
   refreshLoginDiv()
@@ -81,12 +83,13 @@ const refreshLoginDiv = function () {
       $('#login-div').html(loggedIn)
       const makeButtons = SignedInButtons()
       $('#button-div').html(makeButtons)
-      return
+      return 4
     }
   }
   const loggedOut = SignedOut()
   $('#login-div').html(loggedOut)
   $('#button-div').html('')
+  return 4
 }
 
 module.exports = {
