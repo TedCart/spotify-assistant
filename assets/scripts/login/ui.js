@@ -56,8 +56,9 @@ const signInSuccess = function (data) {
   refreshLoginDiv()
 }
 
-const signInFailure = function (error) {
-  console.error(error)
+const signInFailure = function () {
+// const signInFailure = function (error) {
+  // console.error(error)
   $('#welcome-div').text('FAIL. Check your info.')
   document.getElementById('sign-in-email').value = ''
   document.getElementById('sign-in-password').value = ''
