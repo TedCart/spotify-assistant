@@ -29,7 +29,10 @@ const createSongSuccess = function (data) {
   document.getElementById('create-song-artist').value = ''
 }
 
-const createSongFailure = function () { console.error() }
+const createSongFailure = function () {
+  // console.error()
+  $('#welcome-div').text(`Song not created. Please use valid title and artist.`)
+}
 
 const editSongSuccess = function (data) {
   // console.log('data from updated song:\n', data)

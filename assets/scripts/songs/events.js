@@ -18,18 +18,21 @@ const onCreateSong = function (event) {
   const data = getFormFields(this)
   // console.log(data)
   event.preventDefault()
-
-  if ($('#main-left-container').html() === '') {
-    api.getAllSongs()
-      .then(ui.getAllSongsSuccess)
-      .catch(ui.getAllSongsFailure)
-      .then(e => api.createSong(data))
-      .then(ui.createSongSuccess)
-      .catch(ui.createSongFailure)
+  if ((data.song.title === '') || (data.song.artist === '')) {
+    $('#welcome-div').text(`Song not created. Please use valid title and artist.`)
   } else {
-    api.createSong(data)
-      .then(ui.createSongSuccess)
-      .catch(ui.createSongFailure)
+    if ($('#main-left-container').html() === '') {
+      api.getAllSongs()
+        .then(ui.getAllSongsSuccess)
+        .catch(ui.getAllSongsFailure)
+        .then(e => api.createSong(data))
+        .then(ui.createSongSuccess)
+        .catch(ui.createSongFailure)
+    } else {
+      api.createSong(data)
+        .then(ui.createSongSuccess)
+        .catch(ui.createSongFailure)
+    }
   }
 }
 
