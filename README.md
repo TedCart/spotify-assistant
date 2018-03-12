@@ -8,11 +8,11 @@ Deployed Back-end: https://spotify-assistant-itunes.herokuapp.com/
 
 ## Technologies Used
 
--JavaScript
--HTML + CSS
--jQuery
--Handlebars
--Bootstrap
+- JavaScript
+- HTML + CSS
+- jQuery
+- Handlebars
+- Bootstrap
 
 ## What does it do?
 
