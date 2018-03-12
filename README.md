@@ -44,8 +44,8 @@ After a few days, I relented and created a more basic project in keeping with th
 
 ## User-Stories
 
--A user can verify the app's permission to modify their Spotify Library.
--A user can upload their iTunes playlist information and use the resulting interface to selectively add equivalent songs to their Spotify library
+- A user can verify the app's permission to modify their Spotify Library.
+- A user can upload their iTunes playlist information and use the resulting interface to selectively add equivalent songs to their Spotify library
 
 These stories have yet to come true.
 
